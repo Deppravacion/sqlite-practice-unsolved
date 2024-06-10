@@ -172,24 +172,24 @@ describe("messing around", () => {
       expect(
         await doesLineExistInTableSchema(db, "favorites", (line) => {
           return (
-            normalizeLine(line).includes("unique(user_id, dog_id)") ||
-            normalizeLine(line).includes("unique(dog_id, user_id)")
+            line.includes("UNIQUE (user_id, dog_id)") ||
+            line.includes("UNIQUE (dog_id, user_id)")
           );
         })
       ).toBe(true);
-    });
-
-    it("should have a favorite that connects peter to DOOMSLAYER", async () => {
-      const petersFavorites = await findAllFavoritesByName(db, "Peter Garboni");
-      expect(
-        petersFavorites.find((favorite) => favorite.name === "DOOMSLAYER")
-      ).toBeDefined();
     });
 
     it("should have a favorite that connects jon to DOOMSLAYER", async () => {
       const jonsFavorites = await findAllFavoritesByName(db, "Jon Higgz");
       expect(
         jonsFavorites.find((favorite) => favorite.name === "DOOMSLAYER")
+      ).toBeDefined();
+    });
+
+    it("should have a favorite that connects peter to DOOMSLAYER", async () => {
+      const petersFavorites = await findAllFavoritesByName(db, "Peter Garboni");
+      expect(
+        petersFavorites.find((favorite) => favorite.name === "DOOMSLAYER")
       ).toBeDefined();
     });
 
