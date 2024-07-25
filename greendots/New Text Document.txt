@@ -3,3 +3,5 @@ dots added
 adding typescript to backend node video
 7/23
 almost finished with backend
+7/25
+rainy morning
